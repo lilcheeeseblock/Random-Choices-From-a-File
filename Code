@@ -1,0 +1,15 @@
+import numpy as np
+import random as r
+
+file = open("file.txt",'r')
+
+#separate each line in the file and add to empty array
+entries = []
+for line in file:
+    entries.append(line)
+
+#randomly select a finite number of choices from the list of entries with no repeat entries
+for i in range(4):
+    choice = r.randint(0, len(entries))
+    print(entries[choice])
+    entries.pop(choice)
