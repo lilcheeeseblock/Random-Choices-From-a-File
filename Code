@@ -1,15 +1,35 @@
 import numpy as np
 import random as r
+import datetime
+import PySimpleGUI as sg 
 
-file = open("file.txt",'r')
+#recommended shorthand for datetime library
+today = datetime.datetime.today()
+now = datetime.datetime.now()
 
-#separate each line in the file and add to empty array
-entries = []
-for line in file:
-    entries.append(line)
+#array to refer back to in the representation of the final choices
+array1 = []
 
-#randomly select a finite number of choices from the list of entries with no repeat entries
-for i in range(4):
-    choice = r.randint(0, len(entries))
-    print(entries[choice])
-    entries.pop(choice)
+#select the date and time ranges to run the code
+while True:
+    if today.weekday()== 4 and 12 <= now.hour <= 16:
+        file = open("data.txt", "r")
+
+        #separate each file entry
+        array2 = []
+        for line in file:
+            array2.append(line)
+
+        #select random entries with no repeats
+        for i in range(5):
+            selection = r.randint(0, len(array2))
+            array1.append(array2[selection])
+            array2.pop(selection)
+        
+        break
+
+#terminal would shut down immediately and it was too quick to see the selections so i decided to put it in a window because that way it only closes when i close it myself. 
+layout = [[sg.Text(array1)]]
+window = sg.Window('Data', layout)
+event, values = window.read()
+window.close()
