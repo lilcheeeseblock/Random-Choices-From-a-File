@@ -1,0 +1,1 @@
+I have a list of recipes that I use to select what food I will be eating for the week, I hate the planning and selection process so I decided to automate it. The program is to be placed in the startup folder to run on startup of the computer and try and figure out if the conditions fit.
